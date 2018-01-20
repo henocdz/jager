@@ -11,6 +11,14 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jager.settings")
+ENVS = {
+    'production': 'jager.settings.production',
+    'staging': 'jager.settings.staging',
+    'development': 'jager.settings.development',
+}
+
+env = os.getenv('ENVIRONMENT', 'development')
+settings_module = ENVS[env]
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_wsgi_application()
