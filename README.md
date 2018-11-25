@@ -1,2 +1,3 @@
 # jager
-Team performance tool. 
+
+Team performance tool for Jira
